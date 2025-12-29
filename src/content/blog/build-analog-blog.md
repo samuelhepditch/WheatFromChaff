@@ -1,7 +1,7 @@
 ---
 title: Building a Blog with Angular and Analog.js
 slug: build-analog-blog
-description: An example blog post on how to build a blog with A gular and AnalogJs, a complete guide.
+description: An example blog post on how to build a blog with gular and AnalogJs, a complete guide.
 coverImage: https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60
 author: John Doe
 authorInfo: Software Engineer-ChatGPT
