@@ -16,27 +16,26 @@ import { ThemeService } from '../shared/services/theme.service';
           <div class="py-2 text-left space-y-4">
             <p>
               Wheat From Chaff is a place on the web where I work through complex ideas in an effort to better understand the world.
-              The writing here is not about arriving at final answers, but about thinking clearly—starting from first principles and
-              reasoning upward toward logical conclusions.
+              My goal with every post is to start from first principles and reason upward toward higher level concepts.
             </p>
             <p>
-              This approach is inspired by the idea that memorization is not understanding. Learning vocabulary to explain other vocabulary
-              creates the illusion of knowledge without real insight. What matters is the ability to explain ideas simply, trace them back
-              to their foundations, and rebuild them in a way that actually makes sense.
+              My hope is that after reading a post, readers can explain the subject matter clearly without relying on memorization.
+              As the famous Physicist Richard Feynman explains in this <a href="https://www.youtube.com/watch?v=ga_7j72CVlc" target="_blank"
+              rel="noopener noreferrer" style="font-weight: bold; text-decoration: underline;">video</a>,
+              learning vocabulary to explain other vocabulary creates the illusion of knowledge without real insight. 
+              What matters is the ability to explain ideas simply by tracing them back to their foundations, and then we can rebuild 
+              them in a way what actually makes sense.
             </p>
             <p>
-              Much of this philosophy comes from Richard Feynman, who argued that if you can't explain something plainly, you don't truly
-              understand it. His thinking strongly shapes how I learn and how I write, and it aligns closely with the purpose of this blog.
-            </p>
-            <p>
-              I write about my interests—computer science, entrepreneurship, finance, and the art of living—with the goal of separating
-              meaningful insight from noise, jargon, and distraction.
+              If you want to learn about computer science, entrepreneurship, finance, and the art of living you are in the right place.
             </p>
           </div>
+          <div class="pb-8"></div>
+          <blockquote class="italic text-2xl">
+            “Explaining something you truly understand should feel like singing the chorus of your favourite song—there is no effort;
+            the words roll off your tongue.”
+          </blockquote>
           <div class="pb-16"></div>
-          <button class="btn items-center bg-base-300 mt-30" routerLink="/blog">
-            <a>Go to Blog Posts</a>
-          </button>
         </div>
       </div>
     </div>
@@ -47,6 +46,7 @@ import { ThemeService } from '../shared/services/theme.service';
         display: flex;
         flex: 1;
       }
+
     `,
   ],
   imports: [RouterLink],

@@ -12,12 +12,10 @@ import { THEMES, ThemeService } from '../../services/theme.service';
 })
 export class NavigationComponent {
   links = [
-    { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' },
-    {
-      path: '/blog',
-      label: 'Blog',
-    },
+    {path: '/computer-science', label: 'Computer Science'},
+    {path: '/entrepreneurship', label: 'Entrepreneurship'},
+    {path: '/art-of-living', label: 'Art of Living'},
+    {path: '/finance', label: 'Finance'}
   ];
 
   themeService = inject(ThemeService);

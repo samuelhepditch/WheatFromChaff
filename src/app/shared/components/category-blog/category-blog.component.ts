@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { injectContentFiles } from '@analogjs/content';
 import { NgFor } from '@angular/common';
@@ -8,27 +8,38 @@ export interface PostAttributes {
   slug: string;
   description: string;
   coverImage: string;
+  category?: string;
 }
 
+interface CategoryConfig {
+  title: string;
+  category: string;
+}
+
+const CATEGORY_CONFIGS: Record<string, CategoryConfig> = {
+  'computer-science': { title: 'Computer Science Topics', category: 'computer-science' },
+  'entrepreneurship': { title: 'Entrepreneurship Topics', category: 'entrepreneurship' },
+  'art-of-living': { title: 'Art of Living Topics', category: 'art-of-living' },
+  'finance': { title: 'Finance Topics', category: 'finance' }
+};
+
 @Component({
+  selector: 'app-category-blog',
   standalone: true,
   imports: [RouterOutlet, RouterLink, NgFor],
   template: `
-    <div class="bg-base-100 py-24 sm:py-32">
+    <div class="bg-base-100 pt-8 pb-24 sm:pb-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
-          <h2 class="font-bold md:text-5xl text-3xl tracking-tigh">
-            From the blog
+          <h2 class="font-bold md:text-5xl text-3xl tracking-tight">
+            {{ categoryConfig?.title }}
           </h2>
-          <p class="mt-2 text-lg leading-8">
-            Learn how to grow your business with our expert advice.
-          </p>
         </div>
         <div
           class="mt-10 border-t border-gray-200 flex gap-4 pt-10 flex-wrap gap-y-8"
         >
           <div
-            *ngFor="let post of posts"
+            *ngFor="let post of filteredPosts"
             class="card w-96 bg-base-200 shadow-xl"
           >
             <div class="card-body">
@@ -39,24 +50,6 @@ export interface PostAttributes {
                 <h2 class="card-title">{{ post?.attributes?.title }}</h2></a
               >
               <p>{{ post?.attributes?.description }}</p>
-              <div class="card-actions justify-end">
-                <div class="relative mt-8 flex items-center gap-x-4">
-                  <img
-                    [src]="post?.attributes?.coverImage"
-                    alt=""
-                    class="object-cover h-12 w-12 rounded-full"
-                  />
-                  <div class="text-sm leading-6">
-                    <p class="font-semibold">
-                      <span class="absolute inset-0"></span>
-                      {{ post?.attributes?.author || 'Nelson Gutierrez' }}
-                    </p>
-                    <p>
-                      {{ post?.attributes?.authorInfo || 'Angular Developer' }}
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -73,8 +66,23 @@ export interface PostAttributes {
     `,
   ],
 })
-export default class BlogComponent {
-  readonly posts = injectContentFiles<PostAttributes>((contentFile) =>
+export class CategoryBlogComponent {
+  @Input() category!: string;
+
+  allPosts = injectContentFiles<PostAttributes>((contentFile) =>
     contentFile.filename.includes('/src/content/blog')
   );
+
+  get categoryConfig() {
+    return CATEGORY_CONFIGS[this.category];
+  }
+
+  get filteredPosts() {
+    return this.allPosts.filter(post => {
+      if (this.category === 'computer-science') {
+        return post.attributes.category === 'computer-science' || !post.attributes.category;
+      }
+      return post.attributes.category === this.category;
+    });
+  }
 }

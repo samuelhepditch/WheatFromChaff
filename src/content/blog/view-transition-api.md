@@ -2,10 +2,7 @@
 title: Exploring the View Transition API
 slug: view-transition-api
 description: In this post, we'll delve into the exciting realm of the View Transition API and discover how it empowers us to create seamless and dynamic transitions between views.
-coverImage: https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80
-author: Jane Doe-ChatGPT
-authorInfo: Software Engineer-ChatGPT
-date: March 23, 2022
+category: computer-science
 ---
 
 # Exploring the View Transition API
