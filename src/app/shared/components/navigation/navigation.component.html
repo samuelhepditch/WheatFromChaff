@@ -1,13 +1,28 @@
-<div class="navbar bg-base-200">
+<div class="navbar bg-base-200 px-2 sm:px-4">
   <div class="navbar-start">
-    <a class="flex" routerLink="/" routerLinkActive="underline">
+    <!-- Mobile hamburger menu -->
+    <div class="dropdown lg:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle" #dropdownButton>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52" #dropdownMenu>
+        <li *ngFor="let link of links">
+          <a [routerLink]="link.path" routerLinkActive="underline" (click)="closeMenu()">{{ link.label }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Home logo -->
+    <a class="flex ml-2 lg:ml-0" routerLink="/" routerLinkActive="underline">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="w-10 h-10"
+        class="w-8 h-8 sm:w-10 sm:h-10"
       >
         <path
           stroke-linecap="round"
@@ -17,19 +32,20 @@
       </svg>
     </a>
   </div>
-  <div class="navbar-center flex">
-    <ul class="menu menu-horizontal md:px-1 md:gap-4">
+
+  <!-- Desktop menu -->
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 gap-2">
       <li *ngFor="let link of links">
-        <a class="" [routerLink]="link.path" routerLinkActive="underline">{{
-          link.label
-        }}</a>
+        <a class="text-sm" [routerLink]="link.path" routerLinkActive="underline">{{ link.label }}</a>
       </li>
     </ul>
   </div>
+
   <div class="navbar-end">
     <select
       id="themeSelector"
-      class="select select-bordered select-sm w-16"
+      class="select select-bordered select-xs sm:select-sm w-16 sm:w-20 text-center px-2"
       (input)="onThemeChange($event)"
     >
       <option

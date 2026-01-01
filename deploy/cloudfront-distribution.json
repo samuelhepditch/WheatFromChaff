@@ -1,0 +1,55 @@
+{
+  "CallerReference": "wheat-from-chaff-blog-{TIMESTAMP}",
+  "Comment": "WheatFromChaff Blog Distribution",
+  "DefaultCacheBehavior": {
+    "TargetOriginId": "S3-wheat-from-chaff-origin",
+    "ViewerProtocolPolicy": "redirect-to-https",
+    "Compress": true,
+    "ForwardedValues": {
+      "QueryString": false,
+      "Cookies": {
+        "Forward": "none"
+      }
+    },
+    "TrustedSigners": {
+      "Enabled": false,
+      "Quantity": 0
+    },
+    "MinTTL": 0,
+    "DefaultTTL": 86400,
+    "MaxTTL": 31536000
+  },
+  "Origins": {
+    "Quantity": 1,
+    "Items": [
+      {
+        "Id": "S3-wheat-from-chaff-origin",
+        "DomainName": "{BUCKET_NAME}.s3.amazonaws.com",
+        "OriginAccessControlId": "{OAC_ID}",
+        "S3OriginConfig": {
+          "OriginAccessIdentity": ""
+        }
+      }
+    ]
+  },
+  "Enabled": true,
+  "PriceClass": "PriceClass_100",
+  "CustomErrorResponses": {
+    "Quantity": 2,
+    "Items": [
+      {
+        "ErrorCode": 403,
+        "ResponsePagePath": "/index.html",
+        "ResponseCode": "200",
+        "ErrorCachingMinTTL": 300
+      },
+      {
+        "ErrorCode": 404,
+        "ResponsePagePath": "/index.html",
+        "ResponseCode": "200",
+        "ErrorCachingMinTTL": 300
+      }
+    ]
+  },
+  "DefaultRootObject": "index.html"
+}

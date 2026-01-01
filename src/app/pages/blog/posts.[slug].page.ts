@@ -18,16 +18,16 @@ export interface PostAttributes {
   template: `
     <ng-container *ngIf="post$ | async as post">
       <article
-        class="flex flex-col prose prose-slate  dark:prose-invert md:max-w-4xl py-16 w-full px-4"
+        class="flex flex-col prose prose-slate dark:prose-invert max-w-none sm:max-w-2xl lg:max-w-4xl py-8 sm:py-12 lg:py-16 w-full px-4 sm:px-6 lg:px-8"
       >
-        <a [routerLink]="backLink" class="btn items-center mb-8 w-64 flex flex-row"
+        <a [routerLink]="backLink" class="btn items-center mb-6 sm:mb-8 w-full sm:w-64 flex flex-row text-sm sm:text-base"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-8 h-8"
+            class="w-6 h-6 sm:w-8 sm:h-8"
           >
             <path
               stroke-linecap="round"
@@ -41,14 +41,14 @@ export interface PostAttributes {
           class="markdown"
           [content]="post.content"
         ></analog-markdown>
-        <a [routerLink]="backLink" class="btn items-center mb-8 w-64 flex flex-row"
+        <a [routerLink]="backLink" class="btn items-center mb-6 sm:mb-8 w-full sm:w-64 flex flex-row text-sm sm:text-base"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-8 h-8"
+            class="w-6 h-6 sm:w-8 sm:h-8"
           >
             <path
               stroke-linecap="round"
