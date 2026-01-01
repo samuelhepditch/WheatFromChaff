@@ -2,7 +2,7 @@
 title: Exploring the View Transition API
 slug: view-transition-api
 description: In this post, we'll delve into the exciting realm of the View Transition API and discover how it empowers us to create seamless and dynamic transitions between views.
-category: computer-science
+category: finance
 ---
 
 # Exploring the View Transition API

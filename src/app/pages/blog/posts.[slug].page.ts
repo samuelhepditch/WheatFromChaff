@@ -76,39 +76,34 @@ export default class BlogPostComponent {
     subdirectory: 'blog',
   });
 
-  get backLink(): string {
-    const post = this.post$();
-    const category = post?.attributes?.category;
+  backLink = '';
+  backLinkText = '';
 
-    switch (category) {
-      case 'computer-science':
-        return '/computer-science';
-      case 'entrepreneurship':
-        return '/entrepreneurship';
-      case 'art-of-living':
-        return '/art-of-living';
-      case 'finance':
-        return '/finance';
-      default:
-        return '/computer-science'; // Default for posts without category
-    }
-  }
+  constructor() {
+    this.post$.subscribe(post => {
+      const category = post?.attributes?.category;
 
-  get backLinkText(): string {
-    const post = this.post$();
-    const category = post?.attributes?.category;
-
-    switch (category) {
-      case 'computer-science':
-        return 'Back to Computer Science';
-      case 'entrepreneurship':
-        return 'Back to Entrepreneurship';
-      case 'art-of-living':
-        return 'Back to Art of Living';
-      case 'finance':
-        return 'Back to Finance';
-      default:
-        return 'Back to Computer Science';
-    }
+      switch (category) {
+        case 'computer-science':
+          this.backLink = '/computer-science';
+          this.backLinkText = 'Back to Computer Science';
+          break;
+        case 'entrepreneurship':
+          this.backLink = '/entrepreneurship';
+          this.backLinkText = 'Back to Entrepreneurship';
+          break;
+        case 'art-of-living':
+          this.backLink = '/art-of-living';
+          this.backLinkText = 'Back to Art of Living';
+          break;
+        case 'finance':
+          this.backLink = '/finance';
+          this.backLinkText = 'Back to Finance';
+          break;
+        default:
+          this.backLink = '/computer-science';
+          this.backLinkText = 'Back to Computer Science';
+      }
+    });
   }
 }
